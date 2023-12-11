@@ -1,6 +1,6 @@
 import React from "react";
 import comentaryIcon from "../../../assets/images/comentary-icon.svg";
-import { dateFormateDbToView } from "../../../Utils/stringFunctions";
+import { dateFormatDbToView } from "../../../Utils/stringFunctions";
 import ToggleSwitch from "../../../components/Toggle/Toggle";
 // importa a biblioteca de tootips ()
 import "react-tooltip/dist/react-tooltip.css";
@@ -35,7 +35,7 @@ const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
 
               <td className="tbal-data__data tbal-data__data--big tbal-data__btn-actions">
                 {/* {e.dataEvento} */}
-                {dateFormateDbToView(e.dataEvento)}
+                {dateFormatDbToView(e.dataEvento)}
               </td>
 
               <td className="tbal-data__data tbal-data__data--big tbal-data__btn-actions">

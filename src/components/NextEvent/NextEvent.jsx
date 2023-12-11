@@ -28,7 +28,7 @@ const NextEvent = ({ title, description, eventDate, idEvent }) => {
 
       <p className="event-card__description">
         {/* aplicar a função pra converter a data */}
-        {dateFormatDbToView(eventDate)}
+        {eventDate}
       </p>
 
       <a
@@ -44,3 +44,4 @@ const NextEvent = ({ title, description, eventDate, idEvent }) => {
 };
 
 export default NextEvent;
+

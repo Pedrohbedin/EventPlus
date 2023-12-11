@@ -16,7 +16,7 @@ import api, {
 } from "../../Services/Service";
 import Spinner from "../../components/Spinner/Spinner";
 import Notification from "../../components/Notification/Notification";
-import { truncateDateFromDb } from "../../Utils/stringFunctions";
+import { dateFormatDbToForm } from "../../Utils/stringFunctions";
 import eventoImage from "../../assets/images/tipo-evento.svg";
 import "./EventosPage.css";
 
@@ -54,7 +54,10 @@ export default function EventosPaage(props) {
         const tpEventosModificado = [];
         //retorno da api (array tipo de eventos)
         promiseTipoEventos.data.forEach((event) => {
-          tpEventosModificado.push({ value: event.idTipoEvento, text: event.titulo });
+          tpEventosModificado.push({
+            value: event.idTipoEvento,
+            text: event.titulo,
+          });
         });
 
         setTiposEvento(tpEventosModificado);
@@ -406,7 +409,7 @@ export default function EventosPaage(props) {
                       id="dataEvento"
                       name="dataEvento"
                       placeholder="Data do Evento"
-                      value={truncateDateFromDb(frmEditData.dataEvento)}
+                      value={dateFormatDbToForm(frmEditData.dataEvento)}
                       // value="2023-01-05"
                       manipulationFunction={(e) => {
                         setFrmEditData({

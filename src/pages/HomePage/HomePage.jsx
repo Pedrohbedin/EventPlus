@@ -11,64 +11,48 @@ import Container from "../../components/Container/Container";
 import api from "../../Services/Service";
 import Notification from "../../components/Notification/Notification";
 import { nextEventResource } from "../../Services/Service";
-
+import { dateFormatDbToView } from "../../Utils/stringFunctions";
 
 const HomePage = () => {
-  const [nextEvents, setNextEvents] = useState([]);
-  const [notifyUser, setNotifyUser] = useState(); //Componente Notification
-
-  // roda somente na inicialização do componente
   useEffect(() => {
-    async function getNextEvents() {
+    async function getProximosEventos() {
       try {
-        const promise = await api.get(nextEventResource);
-        const dados = await promise.data;
-        // console.log(dados);
-        setNextEvents(dados); //atualiza o state
+        const promise = await api.get("/Evento/ListarProximos");
 
+        console.log(promise.data);
+        setNextEvents(promise.data);
       } catch (error) {
-        console.log("não trouxe os próximos eventos, verifique lá!");
-        // setNotifyUser({
-        //   titleNote: "Erro",
-        //   textNote: `Não foi possível carregar os próximos eventos. Verifique a sua conexão com a internet`,
-        //   imgIcon: "danger",
-        //   imgAlt:
-        //   "Imagem de ilustração de erro. Rapaz segurando um balão com símbolo x.",
-        //   showMessage: true,
-        // });
+        console.log("Deu ruim na api");
       }
     }
-
-    getNextEvents(); //chama a função
+    getProximosEventos();
+    console.log("A home foi montada");
   }, []);
 
-  return (
-    
-    <MainContent>
-      {<Notification {...notifyUser} setNotifyUser={setNotifyUser} />}
-      <Banner />
+  const [nextEvent, setNextEvents] = useState([]);
 
-      {/* PRÓXIMOS EVENTOS */}
+  return (
+    <MainContent>
+      <Banner />
+      {/* Proximos eventos */}
       <section className="proximos-eventos">
         <Container>
-          {/* <Title titleText={"Próximos Eventos"} /> */}
-
+          <Title titleText={"Próximos Eventos"} />
           <div className="events-box">
-            {nextEvents.map((e) => {
+            {nextEvent.map((e) => {
               return (
                 <NextEvent
                   key={e.idEvento}
+                  idEvent={e.idEvento}
                   title={e.nomeEvento}
                   description={e.descricao}
-                  eventDate={e.dataEvento}
-                  idEvent={e.idEvento}
+                  eventDate={dateFormatDbToView(e.dataEvento)}
                 />
               );
             })}
           </div>
         </Container>
       </section>
-
       <VisionSection />
       <ContactSection />
     </MainContent>

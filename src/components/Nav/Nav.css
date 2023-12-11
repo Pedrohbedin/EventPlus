@@ -75,6 +75,11 @@
     text-decoration: none;
 
     border-bottom: 2px solid #201849;
+    transition: 0.2s;
+}
+
+.navbar__item:hover {
+    color: #B51D44;
 }
 
 
@@ -82,7 +87,7 @@
 @media screen and (min-width: 992px) {
     .navbar {
         position: static;
-        width: 80%;
+        width: 70%;
         height: 85px;
         padding: 0;
 
@@ -112,8 +117,7 @@
         height: auto;
         width: 60%;
         flex-direction: row;
-        gap: 20px;
-        /* justify-content: space-between; */
+        justify-content: space-between;
     
         /* border: 1px solid blue; */
     }

@@ -3,7 +3,7 @@ import "./TableEv.css";
 // import editPen from "../../../assets/images/edit-pen.svg";
 import editPen from "../../../assets/images/edit-pen.svg";
 import trashDelete from "../../../assets/images/trash-delete.svg";
-import { dateFormateDbToView } from "../../../Utils/stringFunctions";
+import { dateFormatDbToView } from "../../../Utils/stringFunctions";
 
 // importa a biblioteca de tootips ()
 import "react-tooltip/dist/react-tooltip.css";
@@ -60,7 +60,7 @@ const Table = ({ dados, fnDelete = null, fnUpdate = null }) => {
                 {tp.tiposEvento.titulo}
               </td>
               <td className="table-data__data table-data__data--big">
-                {dateFormateDbToView(tp.dataEvento)}
+                {dateFormatDbToView(tp.dataEvento)}
               </td>
 
               <td className="table-data__data table-data__data--little">
