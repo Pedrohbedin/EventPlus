@@ -1,57 +1,43 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom"; //v6
 
-// imports dos componentes de página
-import HomePage from "../pages/HomePage/HomePage";
-import TipoEventos from "../pages/TipoEventosPage/TipoEventosPage";
-import EventosPage from "../pages/EventosPage/EventosPage";
-import LoginPage from "../pages/LoginPage/LoginPage";
-import TestePage from "../pages/TestePage/TestePage";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import { PrivateRoute } from "./PrivateRoute";
-import EventosAlunoPage from "../pages/EventosAlunoPage/EventosAlunoPage";
+import EventosPage from "../Pages/EventosPage/EventosPage";
+import HomePage from "../Pages/HomePage/HomePage";
+import LoginPage from "../Pages/LoginPage/LoginPage";
+import TipoEventosPage from "../Pages/TipoEventosPages/TipoEventosPage";
+import EventosAlunoPage from "../Pages/AlunosPage/AlunosPage";
+import DetalhesDoEventoPage from "../Pages/DetalhesDoEventoPage/DetalhesDoEventoPage";
 
-// Componente Rota
+import Header from "../Components/Header/Header";
+import { PrivateRoute } from "./PrivateRoutes";
+import Footer from "../Components/Footer/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 const Rotas = () => {
   return (
     <BrowserRouter>
       <Header />
-
       <Routes>
         <Route element={<HomePage />} path="/" exact />
-
         <Route
-          path="/tipo-eventos"
           element={
             <PrivateRoute redirectTo="/">
-              <TipoEventos />
+              <TipoEventosPage />
             </PrivateRoute>
           }
+          path="/tipo-eventos"
         />
-
+        <Route element={<EventosAlunoPage />} path="/eventos-alunos" />
+        <Route element={<DetalhesDoEventoPage />} path="/detalhes-evento/:id" />
         <Route
-          path="/eventos"
           element={
             <PrivateRoute redirectTo="/">
               <EventosPage />
             </PrivateRoute>
           }
+          path="/eventos"
         />
-
-        <Route
-          path="/eventos-aluno"
-          element={
-            <PrivateRoute redirectTo="/">
-              <EventosAlunoPage />
-            </PrivateRoute>
-          }
-        />
-
         <Route element={<LoginPage />} path="/login" />
-        <Route element={<TestePage />} path="/testes" />
       </Routes>
-
       <Footer />
     </BrowserRouter>
   );

@@ -8,7 +8,7 @@ export const dateFormatDbToView = (data) => {
   const dia = parteData[2];
 
   // Formatar a data
-  const dataFormatada = `${dia}/${mes}/${ano}`;
+  const dataFormatada = `${dia} / ${mes} / ${ano}`;
 
   return dataFormatada;
 };

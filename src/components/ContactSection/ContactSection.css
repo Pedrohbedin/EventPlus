@@ -33,13 +33,22 @@
     font-family: Poppins-Regular;
     font-size: 0.875rem;
     color: var(--text-color);
+    text-decoration: none;
+    transition: 0.25s;
+  }
+
+  .contato__telefone:hover {
+    color: rgb(96, 96, 96) ;
   }
   
   @media screen and (min-width: 992px) {
     .contato__endereco-box {
-      flex-direction: row;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 50px;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
     }
   }
   
