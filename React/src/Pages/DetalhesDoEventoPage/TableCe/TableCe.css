@@ -1,0 +1,22 @@
+.lista-comentarios {
+  background-color: white;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 0px 20px;
+}
+.comentario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0px;
+}
+
+h1 {
+  font-size: 1.25rem !important;
+}
+
+p {
+  font-size: .95rem !important;
+  font-weight: lighter;
+  width: 100%;
+}

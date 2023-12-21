@@ -1,0 +1,10 @@
+.lista-comentarios-section {
+    width: 100%;
+    background-color: var(--color-red);
+    height: auto;
+    margin-top: 150px;
+}
+
+.lista-comentarios-container {
+  padding-bottom: 50px;
+}
