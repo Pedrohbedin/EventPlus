@@ -189,6 +189,7 @@ const TipoEventosPage = () => {
             <ImageIllustrator alterText="" imageRender={eventTypeImage} />
             <form
               className="ftipo-evento"
+              id="ftipo-evento"
               onSubmit={frmEdit ? handleUpdate : handleSubmit}
             >
               {!frmEdit ? (
@@ -231,6 +232,7 @@ const TipoEventosPage = () => {
                       name={"atualizar"}
                       textButton={"Atualizar"}
                       aditionalClass="button-component--midle"
+                      href="#lista-eventos-section"
                     />
                     <Button
                       type={"button"}
@@ -248,7 +250,7 @@ const TipoEventosPage = () => {
         </Container>
       </section>
 
-      <section className="lista-eventos-section">
+      <section className="lista-eventos-section" id="lista-eventos-section">
         <Container>
           <Title titleText={"Lista Tipo de Eventos"} color="white" />
           <TableTb 
