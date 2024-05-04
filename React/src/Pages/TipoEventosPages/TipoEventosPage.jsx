@@ -107,6 +107,7 @@ const TipoEventosPage = () => {
       setIdEvento(idElemento);
       const promise = await api.get("/TiposEvento");
       setTipoEventos(promise.data);
+      window.scroll(0, 0);
     } catch (error) {
       setNotifyUser({
         titleNote: "Erro",
@@ -118,6 +119,12 @@ const TipoEventosPage = () => {
       });
     }
   }
+
+  window.scroll({
+    top: 0,
+    behavior: 'smooth',
+    duration: 1000 // Defina a duração desejada em milissegundos
+  });
 
   function editActionAbort() {
     setFrmEdit(false);

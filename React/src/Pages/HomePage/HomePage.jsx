@@ -14,11 +14,6 @@ import { Select } from "../../Components/FormComponents/FormComponents";
 import "./HomePage.css";
 
 const HomePage = () => {
-  // select mocado
-  const [tipoDeEvento] = useState([
-    { value: "1", text: "Próximos eventos" },
-    { value: "2", text: "Evento passados" },
-  ]);
 
   const [tipoEvento, setTipoEvento] = useState("1");
 
@@ -51,7 +46,10 @@ const HomePage = () => {
             id="id-tipo-de-evento"
             name="tipo-de-evento"
             aditionalClass="select-tp-evento"
-            dados={tipoDeEvento}
+            dados={[
+              { value: "1", text: "Próximos eventos" },
+              { value: "2", text: "Evento passados" },
+            ]}
             manipulationFunction={(e) => setTipoEvento(e.target.value)}
             defaultText="Selecione"
             defaultValue="1"

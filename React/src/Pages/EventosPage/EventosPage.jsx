@@ -6,7 +6,11 @@ import Spinner from "../../Components/Spinner/Spinner";
 import Container from "../../Components/Container/Container";
 import ImageIllustrator from "../../Components/ImageIllustrator/ImageIllustrator";
 import EventImage from "../../assets/images/evento.svg";
-import { Button, Input, Select } from "../../Components/FormComponents/FormComponents";
+import {
+  Button,
+  Input,
+  Select,
+} from "../../Components/FormComponents/FormComponents";
 import TableEv from "../../Components/TableEv/TableEv";
 import api from "../../Services/Services";
 import { dateFormatDbToForm } from "../../Utils/stringFunctions";
@@ -97,7 +101,7 @@ const EventosPage = () => {
       const promise = await api.get("/Evento");
       setEventos(promise.data);
       editActionAbort();
-      
+
       setNotifyUser({
         titleNote: "Sucesso",
         textNote: `Atualizado com sucesso!`,
@@ -127,9 +131,10 @@ const EventosPage = () => {
       setDescription(retorno.data.descricao);
       setEventDate(dateFormatDbToForm(retorno.data.dataEvento));
       setIdEvento(idElemento);
-      setIdTipoEvento(retorno.data.idTipoEvento)
+      setIdTipoEvento(retorno.data.idTipoEvento);
       const promise = await api.get("/Evento");
       setEventos(promise.data);
+      window.scroll(0, 0);
     } catch (error) {
       setNotifyUser({
         titleNote: "Erro",
@@ -141,6 +146,12 @@ const EventosPage = () => {
       });
     }
   }
+
+  window.scroll({
+    top: 0,
+    behavior: 'smooth',
+    duration: 1000 // Defina a duração desejada em milissegundos
+  });
 
   function editActionAbort() {
     setFrmEdit(false);
@@ -188,7 +199,7 @@ const EventosPage = () => {
         const promiseIt = await api.get("/Instituicao");
         setInstituicoes(promiseIt.data);
       } catch (error) {
-        setNotifyUser({   
+        setNotifyUser({
           titleNote: "Erro",
           textNote: `Erro ao receber dados da api`,
           imgIcon: "danger",
